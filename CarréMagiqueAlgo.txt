@@ -1,0 +1,77 @@
+ALGORITHME: CarréMagique
+
+//BUT: Afficher le tableau du carré magique
+//ENTREE: Un tableau de valeurs
+//SORTIE: Le tableau remplit à la façon du carré magique
+
+CONST 
+	Taillemax<--5 : ENTIER
+
+VAR 
+	tableau: tableau[1..taillemax,1..taillemax]  de ENTIER;
+	i, j, milieu, nombre, cont : ENTIER;
+
+DEBUT
+	nombre<--1;
+	POUR i DE 1 A taillemax FAIRE
+		POUR j DE 1 A taillemax FAIRE
+			tableau[i,j]:=0;
+		FINPOUR
+	FINPOUR
+
+	   milieu<--((size DIV 2)+1);
+	
+	i<--milieu-1;
+	j<--milieu;
+	tableau[i,j]<--nombre;
+
+	POUR cont DE 1 A (taillemax-1) FAIRE
+		  nombre<--nombre+1;
+		  i<--i-1;
+		  j<--j+1;
+
+		SI i>taillemax ALORS
+			i<--1;
+		FINSI
+		SI j>taillemax ALORS
+			j<--1;
+		FINSI
+		SI j<1 ALORS
+		  j<--taillemax;
+		FINSI
+		SI i<1 ALORS
+		  i<--taillemax;
+		FINSI
+
+		TANTQUE tableau[i,j]<>0 FAIRE
+		  i<--i-1;
+		  j<--j-1;
+		FINTANTQUE
+
+		SI i>taillemax ALORS
+			i<--1;
+		FINSI
+		SI j>taillemax ALORS
+			j:=1;
+		FINSI
+		SI j<1 ALORS
+		  j<--taillemax;
+		FINSI
+		SI i<1 ALORS
+		  i<--taillemax;
+		FINSI
+		
+
+		tableau[i,j]<--nombre;
+	FINPOUR
+
+	POUR i DE 1 A taillemax FAIRE
+		POUR j DE 1 A taillemax FAIRE
+	  		ECRIRE('|');
+			ECRIRE(tableau[i,j]:2);
+		FINPOUR
+		ECRIRE('|');
+		ECRIRE();
+	FINPOUR
+FIN.
+
